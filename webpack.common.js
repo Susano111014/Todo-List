@@ -4,13 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
-    devtool: 'inline-source-map',
-    devServer: {
-        static: './dist',
-    },
     plugins: [new HtmlWebpackPlugin({
         template: './src/index.html',
-        title: 'Restaurant Page',
+        title: 'Todo-List',
         filename: 'bundle.html',
         inject: 'body',
     })],
@@ -18,13 +14,19 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    //  optimization: {
-    //      runtimeChunk: 'single',
-    // },
+
     module: {
         rules: [{
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: ['style-loader', 
+                {
+                    loader: 'css-loader',
+                    options: {
+                      modules: true, // Enable CSS modules
+                      localIdentName: '[name]__[local]___[hash:base64:5]' // Optional: customize class names
+                    }
+                  }
+            ]
         },
         {
             test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
