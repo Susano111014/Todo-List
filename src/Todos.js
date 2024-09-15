@@ -8,20 +8,29 @@
 
 TodosFactory.prototype.addTodoTitle = function (title) {
     this.title = title.toString();
+    console.log(`Your Todo's Title: ${textDescription}
+        has been successfully added`);
 };
 
 TodosFactory.prototype.addDescription = function(description) {
-    return description.toString();
+    const textDescription = description.toString();
+    console.log(`Your Todo's Description: ${textDescription}
+        has been successfully added`);
 };
 
 TodosFactory.prototype.addDate = function (dueDate) {
-    return dueDate;
+    this.dueDate = dueDate;
+    console.log(`Your Todo's Date: ${textDescription}
+        has been successfully added`);
 };
 
 TodosFactory.prototype.addPriority = function (priority) {
-    return priority;
+    this.priority = priority;
+    console.log(`Your Todo's priority: ${priority}
+        has been successfully added`);
 };
 
-TodosFactory.prototype.addChecklist = function (checklist) {
-    return checklist;
+TodosFactory.prototype.addChecked = function () {
+    this.checklist = 'checked';
+    console.log(`Your Todo's task has been: has been completed`);
 };
