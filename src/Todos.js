@@ -7,7 +7,7 @@ function TodosFactory () {
    this.description;
    this.dueDate;
    this.priority;
-   this.checklist;
+   this.checklist = false;
 }
 
 TodosFactory.prototype.addTodoTitle = function (title) {
