@@ -23,18 +23,13 @@ TodosFactory.prototype.addDescription = function(description) {
 };
 
 TodosFactory.prototype.addDate = function (year, month, day, hour, minutes) {
-    this.dueDate = [
-        year,
-        month-1,
-        day,
-        hour,
-        minutes,
-    ];
+    this.dueDate = [year, month-1, day, hour, minutes].filter(date => date).map(date => date.toString());
     console.log(`Your Todo's Date is : ${FormateDate(...this.dueDate)} has been successfully added`);
 };
 
 function FormateDate (yyy, MM, dd, HH, mm) {
-    const createdDate = format(new Date(yyy, MM, dd, HH, mm), 'PPpp');
+    const cleanedValues = [yyy, MM, dd, HH, mm].filter(date => date);
+    const createdDate = format(new Date(...cleanedValues), 'PPp');
     return createdDate;
 }
 
