@@ -1,4 +1,5 @@
-export {TodoListStorage};
+export {TodoListStorage, FuncToJson};
+
 
 function TodoListStorage() {
     { return SavesItems, LookUpStorage, RemoveItem};
@@ -20,6 +21,9 @@ const LookUpStorage = (key) => {
 
 const RemoveItem = (key) => localStorage.removeItem(key);
 
+
+
+
 function storageAvailable(type) {
     let storage;
     try {
@@ -38,4 +42,6 @@ function storageAvailable(type) {
       );
     }
   }
+
+  
   
