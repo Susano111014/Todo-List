@@ -1,12 +1,15 @@
+import { TodosFactory } from "./Todos";
+export {CallDefaultSection, CreateNewSections};
+
 function CallDefaultSection() {
-    return { CrateTodo, SavesTodo, DeleteTodo };
+    return { CrateTodo: CratedTodo, SavesTodos, DeleteTodos };
 }
-const CrateTodo = () => Object.CreateNewTodo();
-const DeleteTodo = (key) => RemoveItem(key);
-const SavesTodo = (todo) => savesItems('key', todo);
+const CratedTodo = () => new TodosFactory();
+const DeleteTodos = (key) => RemoveItem(key);
+const SavesTodos = (todo) => savesItems('key', todo);
 
 function CreateNewSections() {
     { return AddTitle, AddNewTodo };
 }
 const AddNewTodo = (titleKey) => LookUpStorage(titleKey);
-const AddTitle = (title) => title;
+const AddTitle = (title) => toString(title);
