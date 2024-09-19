@@ -1,8 +1,10 @@
-export { TodoListStorage, FuncToJson };
-
+export {TodoListStorage};
 
 function TodoListStorage() {
-  { return SavesItems, LookUpStorage, RemoveItem };
+  return {
+    SavesItems, LookUpStorage,
+    RemoveItem, objToJson, transformToCode
+  };
 };
 
 const SavesItems = (key, item) => {
@@ -13,14 +15,15 @@ const SavesItems = (key, item) => {
 }
 
 const LookUpStorage = (key) => {
-  if (localStorage.getItem(key)) {
-    console.log('Item successfully added at the Storage')
+  const itemRetrieved = localStorage.getItem(key);
+  if (itemRetrieved) {
+    console.log(`Item: ${itemRetrieved} gotted`)
   } else
     console.log(`the ${key} item not exist`)
+  return itemRetrieved
 };
 
 const RemoveItem = (key) => localStorage.removeItem(key);
-
 
 function storageAvailable(type) {
   let storage;
@@ -53,4 +56,17 @@ function FuncToJson(obj) {
 function objToJson(object) {
   FuncToJson(object);
   const myObjJson = JSON.stringify(object);
+  console.log(myObjJson);
+  return myObjJson
+}
+
+function transformToCode(object) {
+  const obj = JSON.parse(object)
+  for (const func in obj) {
+    if (obj[func] !== false && obj[func].includes("function")) {
+      obj[func] = eval("(" + obj[func] + ")");
+      console.log(obj[func]);
+    }
+  }
+  return obj
 }
